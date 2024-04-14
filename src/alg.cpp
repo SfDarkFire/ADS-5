@@ -19,8 +19,8 @@ int getPr(char inf) {
     break;
   }
 }
-string infx2pstfx(string inf) {
-  string str = "";
+std::string infx2pstfx(std::string inf) {
+  std::string str = "";
   stack<char> stack1;
   queue<char> queue;
   for (int i = 0; i < inf.length(); ++i) {
@@ -79,7 +79,7 @@ string infx2pstfx(string inf) {
   return str;
 }
 // вычисление выражения, записанного в постфиксной форме
-int eval(string post) {
+int eval(std::string post) {
   int res = 0;
   stack<int> stack1;
   for (int i = 0; i < post.length(); ++i) {
