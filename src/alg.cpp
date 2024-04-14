@@ -4,10 +4,7 @@
 #include <stack>
 #include <queue>
 
-using namespace std;
-
-int getPr(char inf) 
-{
+int getPr(char inf) {
 	switch (inf)
 	{
 	case '+':
@@ -23,31 +20,24 @@ int getPr(char inf)
 		break;
 	}
 }
-
-string infx2pstfx(string inf) 
-{
+string infx2pstfx(string inf) {
 	string str = "";
 	stack<char> stack1;
 	queue<char> queue;
-	for (int i = 0; i < inf.length(); ++i) 
-	{
-		if (inf[i] >= '0' && inf[i] <= '9') 
-		{
+	for (int i = 0; i < inf.length(); ++i) {
+
+		if (inf[i] >= '0' && inf[i] <= '9') {
 			queue.push(inf[i]);
 			continue;
 		}
 		else {
-			if (inf[i] == '(') 
-			{
+			if (inf[i] == '(') {
 				stack1.push(inf[i]);
 				continue;
 			}
-			if (inf[i] == ')') 
-			{
-				while ((!(stack1.empty()))) 
-				{
-					if (stack1.top() == '(') 
-					{
+			if (inf[i] == ')') {
+				while ((!(stack1.empty()))) {
+					if (stack1.top() == '(') {
 						stack1.pop();
 						continue;
 					}
@@ -56,22 +46,17 @@ string infx2pstfx(string inf)
 				}
 				continue;
 			}
-			if (stack1.empty() || ((stack1.top()) == '(')) 
-			{
+			if (stack1.empty() || ((stack1.top()) == '(')) {
 				stack1.push(inf[i]);
 				continue;
 			}
-			if (getPr(inf[i]) > getPr(stack1.top())) 
-			{
+			if (getPr(inf[i]) > getPr(stack1.top())) {
 				stack1.push(inf[i]);
 				continue;
 			}
-			if (getPr(inf[i]) <= getPr(stack1.top())) 
-			{
-				while (!(stack1.empty())) 
-				{
-					if ((getPr(inf[i]) <= getPr(stack1.top())) || ((stack1.top()) == '(')) 
-					{
+			if (getPr(inf[i]) <= getPr(stack1.top())) {
+				while (!(stack1.empty())) {
+					if ((getPr(inf[i]) <= getPr(stack1.top())) || ((stack1.top()) == '(')) {
 						queue.push(stack1.top());
 						stack1.pop();
 					}
@@ -79,40 +64,30 @@ string infx2pstfx(string inf)
 				stack1.push(inf[i]);
 				continue;
 			}
-
 		}
-
 	}
-	while (!(stack1.empty())) 
-	{
-		if ((stack1.top() == '(') || (stack1.top() == ')')) 
-		{
+	while (!(stack1.empty())) {
+		if ((stack1.top() == '(') || (stack1.top() == ')')) {
 			stack1. pop();
 		}
 		queue.push(stack1.top());
 		stack1.pop();
 	}
-	while ((!(queue.empty()))) 
-	{
+	while ((!(queue.empty()))) {
 		str += queue.front();
 		queue.pop();
 	}
-
-
 	return str;
 }
 // вычисление выражения, записанного в постфиксной форме
 int eval(string post) {
 	int res = 0;
 	stack<int> stack1;
-	for (int i = 0; i < post.length(); ++i) 
-	{
-		if (post[i] >= '0' && post[i] <= '9') 
-		{
+	for (int i = 0; i < post.length(); ++i) {
+		if (post[i] >= '0' && post[i] <= '9') {
 			stack1.push(post[i]-48);
 		}
-		else 
-		{
+		else {
 			int b = stack1.top();
 			stack1.pop();
 			int a = stack1.top();
@@ -138,3 +113,12 @@ int eval(string post) {
 	}
 	res = stack1.top();
 	return res;
+}
+int main() {
+	string str1 = "5*6+(2-9)";
+	string str2 = infx2pstfx(str1);
+	int res = eval(str2);
+	cout << str2 << endl;
+	cout << res << endl;
+	return 0;
+}
