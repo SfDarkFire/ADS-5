@@ -27,8 +27,7 @@ std::string infx2pstfx(std::string inf) {
         if (inf[i] >= '0' && inf[i] <= '9') {
             queue.push(inf[i]);
             continue;
-        }
-        else {
+        } else {
             if (inf[i] != '(' && inf[i] != ')') {
                 queue.push(' ');
             }
@@ -86,8 +85,8 @@ std::string infx2pstfx(std::string inf) {
 }
 // вычисление выражения, записанного в постфиксной форме
 int eval(std::string post) {
-    int res = 0,a=0,b=0,sum=0;
-    int num=0;
+    int res = 0,a = 0,b = 0,sum = 0;
+    int num = 0;
     bool por = false;
     std::stack<int> stack1;
     for (int i = 0; i < post.length(); ++i) {
@@ -103,12 +102,10 @@ int eval(std::string post) {
             if (num > 1) {
                 sum *= 10;
                 sum+= post[i] - 48;
-            }
-            else {
+            } else {
                 sum += post[i] - 48;
             }
-        }
-        else if (post[i]!=' ') {
+        } else if (post[i] != ' ') {
             por = false;
             b = stack1.top();
             stack1.pop();
