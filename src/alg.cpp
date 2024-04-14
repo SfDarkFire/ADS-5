@@ -27,8 +27,7 @@ string infx2pstfx(string inf) {
     if (inf[i] >= '0' && inf[i] <= '9') {
       queue.push(inf[i]);
       continue;
-    }
-    else {
+    } else {
       if (inf[i] == '(') {
         stack1.push(inf[i]);
         continue;
@@ -54,8 +53,10 @@ string infx2pstfx(string inf) {
       }
       if (getPr(inf[i]) <= getPr(stack1.top())) {
         while (!(stack1.empty())) {
-          if ((getPr(inf[i]) <= getPr(stack1.top())) || ((stack1.top()) == '(')) {
-            queue.push(stack1.top());
+          if ((getPr(inf[i]) <= getPr(stack1.top()))
+          || ((stack1.top()) == '(')) {
+            queue.push
+            (stack1.top());
             stack1.pop();
           }
         }
@@ -84,14 +85,12 @@ int eval(string post) {
   for (int i = 0; i < post.length(); ++i) {
     if (post[i] >= '0' && post[i] <= '9') {
       stack1.push(post[i]-48);
-    }
-    else {
+    } else {
       int b = stack1.top();
       stack1.pop();
       int a = stack1.top();
       stack1.pop();
-      switch (post[i])
-      {
+      switch (post[i]) {
       case '+':
         stack1.push(a + b);
         break;
