@@ -85,7 +85,7 @@ std::string infx2pstfx(std::string inf) {
 }
 // вычисление выражения, записанного в постфиксной форме
 int eval(std::string post) {
-    int res = 0,a = 0,b = 0,sum = 0;
+    int res = 0, a = 0, b = 0, sum = 0;
     int num = 0;
     bool por = false;
     std::stack<int> stack1;
