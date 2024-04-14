@@ -5,19 +5,18 @@
 #include <queue>
 
 int getPr(char inf) {
-	switch (inf)
-	{
-	case '+':
-	case '-':
-		return 1;
-		break;
-	case '*':
-	case '/':
-		return 2;
-		break;
-	default:
-		return 0;
-		break;
+  switch (inf) {
+  case '+':
+  case '-':
+    return 1;
+    break;
+  case '*':
+  case '/':
+    return 2;
+    break;
+  default:
+    return 0;
+    break;
 	}
 }
 string infx2pstfx(string inf) {
